@@ -38,23 +38,22 @@ module.exports = db => {
       } else {
         console.log("User could not be created");
 // Adding a prop to display a message when User ID is same
-        res.render("user/NewUser", {message: "this userid has been taken", cookies: req.cookies})
+        res.render("users/CreateUser", {message: "this userid has been taken", cookies: req.cookies})
       }
     });
   };
 
   // Controllers for Logging in Users
   const loginForm = (req, res) => {
-    res.render("user/LoginUser");
+    res.render("users/LoginUser");
   };
 
   const loginUser = (req, res) => {
     db.users.login(req.body, (err, queryResult) => {
       if (err) {
-        console.err("Error Logging User In:", err);
+        console.log("Error Logging User In:", err);
         res.sendStatus(500);
       }
-
       let hashedPass = sha256(req.body.password);
       // Hashing Current Session Cookie
       let currentSessionCookie = sha256(

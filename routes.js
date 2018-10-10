@@ -14,10 +14,10 @@ module.exports = (app, db) => {
    */
    // CRUD users
    app.get('/users/new', users.newForm);
-   // app.get('/users/login', users.loginForm);
+   app.get('/users/login', users.loginForm);
    // app.get('/users/logout', users.logoutUser);
    app.post('/users/new', users.createUser);
-   // app.post('/users/login', users.loginUser);
+   app.post('/users/login', users.loginUser);
    //
 
 };

@@ -24,7 +24,7 @@ module.exports = dbPoolInstance => {
   };
 
   const login = (user, callback) => {
-      const queryString = "SELECT * FROM users WHERE name = '"+user.name+"'";
+      const queryString = "SELECT * FROM users WHERE user_name = '"+user.name+"'";
       dbPoolInstance.query(queryString, (err, queryResult) => {
           callback(err, queryResult)
       })

@@ -6,7 +6,7 @@ class CreateUser extends React.Component {
     return (
       <html>
         <Header />
-        <div className="col-lg-4 center">
+        <div className="col-lg-4 center container">
           <h1 className="form-heading">Sign Up Form</h1>
           <div className="login-form">
             <div className="main-div">
