@@ -5,7 +5,7 @@ class CreateUser extends React.Component {
   render() {
     return (
       <html>
-        <Header />
+        <Header cookies={this.props.cookies}/>
         <div className="col-lg-4 my-auto container">
           <h1 className="form-heading">Log In Form</h1>
           <div className="login-form">

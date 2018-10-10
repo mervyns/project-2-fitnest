@@ -4,6 +4,17 @@ const cssLink = "../../css/styles.css";
 
 class Header extends React.Component {
   render() {
+    // Salt for Hash
+    const SALT = "Too Much Salt Is Bad For Health";
+    const checkSessionCookieHash = sha256(
+      this.props.cookies.user_id + "logged_id" + SALT
+    );
+    // Initializing a variable to track whether User is logged in or not.
+    // The variable can then be used in a Ternary to render login/logout button.
+    var isLoggedIn = false;
+    if (this.props.cookies.loggedIn === checkSessionCookieHash) {
+      isLoggedIn = true;
+    }
     return (
       <html>
         <header>
@@ -39,16 +50,30 @@ class Header extends React.Component {
                     Home <span class="sr-only">(current)</span>
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/users/new">
-                    Sign Up
-                  </a>{" "}
-                </li>
-                <li>
-                  <a class="nav-link" href="/users/login">
-                    Log In
-                  </a>{" "}
-                </li>
+                {isLoggedIn ? (
+                  <form method="GET" action="/users/logout">
+                    <span>Current User ID : {this.props.cookies.user_id}</span>
+                    <button
+                      className="btn btn-outline-danger my-2 my-sm-0"
+                      type="submit"
+                    >
+                      Log Out
+                    </button>
+                  </form>
+                ) : (
+                  <span>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/users/new">
+                        Sign Up
+                      </a>{" "}
+                    </li>
+                    <li>
+                      <a class="nav-link" href="/users/login">
+                        Log In
+                      </a>{" "}
+                    </li>
+                  </span>
+                )}
                 <li>
                   <a class="nav-link" href="#">
                     Link

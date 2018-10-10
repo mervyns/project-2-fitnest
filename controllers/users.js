@@ -11,7 +11,7 @@ module.exports = db => {
    */
   // Controllers for Creating New Users
   const newForm = (req, res) => {
-    res.render("users/CreateUser");
+    res.render("users/CreateUser", {cookies: req.cookies});
   };
 
   const createUser = (req, res) => {
@@ -45,7 +45,7 @@ module.exports = db => {
 
   // Controllers for Logging in Users
   const loginForm = (req, res) => {
-    res.render("users/LoginUser");
+    res.render("users/LoginUser", {cookies: req.cookies});
   };
 
   const loginUser = (req, res) => {
@@ -74,13 +74,15 @@ module.exports = db => {
       }
     });
   };
-// Show Individual User Page
-const showUser = (req, res) => {
-    db.users.showUser(req.params, (err, queryResult)=> {
+
+// Show Individual User Dashboard
+const showUserDashboard = (req, res) => {
+// Getting from Cookies so that Users can only access their own individual dashboard
+    db.users.getDashboardInfo(req.cookies, (err, queryResult)=> {
         if (err) {
             console.error("Error Showing User: ",err)
         }
-        res.render("user/ShowUser", {userInfo : queryResult.rows, cookies: req.cookies})
+        res.render("users/Dashboard", {userInfo : queryResult.rows, cookies: req.cookies})
     })
 }
 
@@ -112,7 +114,7 @@ const followUser = (req, res) => {
     createUser,
     loginForm,
     loginUser,
-    showUser,
+    showUserDashboard,
     followUser,
     logoutUser
   };

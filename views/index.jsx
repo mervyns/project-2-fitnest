@@ -6,7 +6,7 @@ class Index extends React.Component {
     render () {
         return(
             <html>
-            <Header />
+            <Header cookies={this.props.cookies}/>
             <MainBody />
             </html>
         )

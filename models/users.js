@@ -30,8 +30,8 @@ module.exports = dbPoolInstance => {
       })
   }
 
-  const showUser = (user, callback) => {
-      const queryString = "SELECT users.user_id, users.name, tweets.content FROM users, tweets WHERE users.user_id='"+user.id+"'";
+  const getDashboardInfo = (user, callback) => {
+      const queryString = "SELECT * FROM users WHERE users.user_id='"+user.user_id+"'";
       dbPoolInstance.query(queryString, (err, queryResult) => {
           callback(err, queryResult)
       })
@@ -48,7 +48,7 @@ module.exports = dbPoolInstance => {
   return {
     createUser,
     login,
-    showUser,
+    getDashboardInfo,
     followUser
   };
 };
