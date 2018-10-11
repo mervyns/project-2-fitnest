@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 const imagePath = "../../img/Background.jpg";
 
 class MainBody extends React.Component {

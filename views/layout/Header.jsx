@@ -28,8 +28,8 @@ class Header extends React.Component {
         </header>
         <body>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-              Navbar
+            <a class="navbar-brand" href="/">
+              FitNest
             </a>
             <button
               class="navbar-toggler"
@@ -46,20 +46,68 @@ class Header extends React.Component {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="/">
                     Home <span class="sr-only">(current)</span>
                   </a>
                 </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="/exercises/all"
+                    id="exerciseNavbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Exercises
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/exercises/all">
+                      Show All Exercises
+                    </a>
+                    <a class="dropdown-item" href="/exercises/new">
+                      Add a exercise
+                    </a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="/nutrition/all"
+                    id="nutritionNavbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Nutrition
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/nutrition/all">
+                      Show All Food
+                    </a>
+                    <a class="dropdown-item" href="/nutrition/new">
+                      Add a food
+                    </a>
+                  </div>
+                </li>
+
                 {isLoggedIn ? (
-                  <form method="GET" action="/users/logout">
-                    <span>Current User ID : {this.props.cookies.user_id}</span>
-                    <button
-                      className="btn btn-outline-danger my-2 my-sm-0"
-                      type="submit"
-                    >
-                      Log Out
-                    </button>
-                  </form>
+                  <li>
+                    {" "}
+                    <form method="GET" action="/users/logout">
+                      <span>
+                        Current User ID : {this.props.cookies.user_id}
+                      </span>
+                      <button
+                        className="btn btn-outline-danger my-2 my-sm-0"
+                        type="submit"
+                      >
+                        Log Out
+                      </button>
+                    </form>
+                  </li>
                 ) : (
                   <span>
                     <li class="nav-item">

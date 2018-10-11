@@ -1,6 +1,8 @@
 const pg = require('pg');
 const url = require('url');
 const users = require('./models/users')
+const exercises = require('./models/exercises')
+const nutrition = require('./models/nutrition')
 
 
 var configs;
@@ -40,6 +42,8 @@ module.exports = {
    * ADD APP MODELS HERE
    */
    users: users(pool),
+   exercises: exercises(pool),
+   nutrition: nutrition(pool),
 
   //make queries directly from here
   queryInterface: (text, params, callback) => {
