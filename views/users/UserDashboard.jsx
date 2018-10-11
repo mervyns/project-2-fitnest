@@ -1,12 +1,11 @@
 import React from 'react'
 import Header from '../layout/Header'
 
-class Dashboard extends React.Component {
+class UserDashboard extends React.Component {
   render () {
     return (
       <html>
-				<Header cookies={this.props.cookies} />
-        <div>
+        <div className="container">
         Hello <p>{this.props.userInfo[0].user_name}</p>
 			</div>
       </html>
@@ -14,4 +13,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default UserDashboard;

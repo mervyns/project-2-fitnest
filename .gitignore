@@ -1,4 +1,6 @@
 ####### NODE
+/node_modules
+/.git
 
 # Logs
 logs

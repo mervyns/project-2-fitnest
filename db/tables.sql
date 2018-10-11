@@ -34,6 +34,23 @@ CREATE TABLE IF NOT EXISTS exercise(
 	exercise_notes TEXT
 );
 
+CREATE TABLE IF NOT EXISTS daily_nutri_tracker (
+	item_id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users(user_id),
+	food_id INTEGER REFERENCES nutrition(food_id),
+	food_qty INTEGER,
+	created_date TIMESTAMPTZ
+);
+
+
+CREATE TABLE IF NOT EXISTS daily_exercise_tracker (
+	item_id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users(user_id),
+	exercise_id INTEGER REFERENCES exercise(exercise_id),
+	exercise_qty INTEGER,
+	created_date TIMESTAMPTZ
+);
+
 CREATE TABLE IF NOT EXISTS nutri_plan(
 	nutri_plan_id SERIAL PRIMARY KEY,
 	nutri_plan_name VARCHAR,

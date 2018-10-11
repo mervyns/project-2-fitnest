@@ -7,6 +7,8 @@ module.exports = (app, db) => {
   app.get("/", (req, res) => {
     res.render("index", { cookies: req.cookies });
   });
+// Testing Routes
+  app.get('/dashboard', users.showMainDashboard)
 
   /*
    *  =========================================
@@ -30,6 +32,9 @@ module.exports = (app, db) => {
   // CRUD Nutrition
   // Route to show all Nutrition
   app.get("/nutrition/all", nutrition.listAllFood);
-  app.get('/nutrition/new', nutrition.addFoodForm);
-  app.post('/nutrition/new', nutrition.addFood)
+  app.get("/nutrition/new", nutrition.addFoodForm);
+  app.get("/nutrition/daily/new", nutrition.addDailyFoodForm);
+  app.get('/nutrition/daily/show', nutrition.showFoodForDay)
+  app.post("/nutrition/new", nutrition.addFood);
+  app.post("/nutrition/daily/new", nutrition.addDailyFood);
 };

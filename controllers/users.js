@@ -79,7 +79,18 @@ const showUserDashboard = (req, res) => {
         if (err) {
             console.error("Error Showing User: ",err)
         }
-        res.render("users/Dashboard", {userInfo : queryResult.rows, cookies: req.cookies})
+        res.render("users/UserDashboard", {userInfo : queryResult.rows, cookies: req.cookies})
+    })
+}
+
+// Show Main OVERALL User Dashboard
+const showMainDashboard = (req, res) => {
+// Getting from Cookies so that Users can only access their own individual dashboard
+    db.users.getDashboardInfo(req.cookies, (err, queryResult)=> {
+        if (err) {
+            console.error("Error Showing User: ",err)
+        }
+        res.render("layout/MainDashboard", {userInfo : queryResult.rows, cookies: req.cookies})
     })
 }
 
@@ -101,6 +112,8 @@ const showUserDashboard = (req, res) => {
     loginForm,
     loginUser,
     showUserDashboard,
-    logoutUser
+    logoutUser,
+    showMainDashboard
+
   };
 };
