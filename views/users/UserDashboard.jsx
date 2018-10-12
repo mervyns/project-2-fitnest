@@ -1,15 +1,15 @@
-import React from 'react'
-import Header from '../layout/Header'
+import React from "react";
+import Header from "../layout/Header";
 
 class UserDashboard extends React.Component {
-  render () {
+  render() {
     return (
       <html>
         <div className="container">
-        Hello <p>{this.props.userInfo[0].user_name}</p>
-			</div>
+          Hello <p>{this.props.userInfo[0].user_name}</p>
+        </div>
       </html>
-    )
+    );
   }
 }
 

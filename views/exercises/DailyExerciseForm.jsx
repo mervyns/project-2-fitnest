@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../layout/Header";
 
-class AddDailyFoodForm extends React.Component {
+class AddDailyExerciseForm extends React.Component {
   render() {
     return (
       <html>
@@ -18,13 +18,13 @@ class AddDailyFoodForm extends React.Component {
                 action="/nutrition/daily/new"
               >
                 <div className="form-group">
-                  <label for="inputName">Food Name</label>
+                  <label for="inputName">Exercise Name</label>
                   <input
                     name="name"
                     type="text"
                     className="form-control"
                     id="inputName"
-                    placeholder="Chicken Rice"
+                    placeholder="Squats"
                   />
                 </div>
                 <div className="form-group">
@@ -49,4 +49,4 @@ class AddDailyFoodForm extends React.Component {
   }
 }
 
-module.exports = AddDailyFoodForm;
+module.exports = AddDailyExerciseForm;

@@ -9,6 +9,7 @@ module.exports = db => {
    * Controller logic
    * ===========================================
    */
+ // Logic to get a list of All Foods and Render in the View
   const listAllFood = (req, res) => {
     db.nutrition.getFoodList((err, queryResult) => {
       if (err) {
@@ -21,11 +22,11 @@ module.exports = db => {
       });
     });
   };
-
+// Logic to SHOW Form to Add Food into the Food Database
   const addFoodForm = (req, res) => {
     res.render("nutrition/AddFoodForm", { cookies: req.cookies });
   };
-
+ // Logic to Add Food by putting a POST request into the Food DB
   const addFood = (req, res) => {
     db.nutrition.addFood(req.body, (err, queryResult) => {
       if (err) {
@@ -36,6 +37,7 @@ module.exports = db => {
     });
   };
 
+// Code for Daily Nutrition Tracking Actions
   const addDailyFoodForm = (req, res) => {
     res.render("nutrition/DailyFoodForm", { cookies: req.cookies });
   };

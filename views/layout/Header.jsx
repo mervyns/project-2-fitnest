@@ -94,19 +94,32 @@ class Header extends React.Component {
                 </li>
 
                 {isLoggedIn ? (
-                  <li>
-                    {" "}
-                    <form method="GET" action="/users/logout">
-                      <span>
-                        Current User ID : {this.props.cookies.user_id}
-                      </span>
-                      <button
-                        className="btn btn-outline-danger my-2 my-sm-0"
-                        type="submit"
-                      >
-                        Log Out
-                      </button>
-                    </form>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="/nutrition/all"
+                      id="nutritionNavbarDropdown"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      User ID: {this.props.cookies.user_id} User Menu
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/nutrition/daily/new">
+                        Add Daily Nutrition
+                      </a>
+                      <a class="dropdown-item" href="/nutrition/daily/show">
+                        Show Daily Nutrition
+                      </a>
+                      <a class="dropdown-item" href="/exercises/daily/new">
+                        Add Daily Exercises
+                      </a>
+                      <a class="dropdown-item" href="/exercises/daily/show">
+                        Show Daily Exercises
+                      </a>
+                    </div>
                   </li>
                 ) : (
                   <span>

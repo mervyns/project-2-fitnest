@@ -27,7 +27,11 @@ module.exports = (app, db) => {
   // Route to show all Exercises
   app.get("/exercises/all", exercises.listAllExercises);
   app.get("/exercises/new", exercises.addExerciseForm);
+  app.get("/exercises/daily/new", exercises.addDailyExerciseForm);
+  app.get('/exercises/daily/show', exercises.showExerciseForDay)
   app.post("/exercises/new", exercises.addExercise);
+  app.post("/exercises/daily/new", exercises.addDailyExercise);
+
 
   // CRUD Nutrition
   // Route to show all Nutrition

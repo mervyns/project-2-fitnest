@@ -16,7 +16,6 @@ class MainDashboard extends React.Component {
             </div>
             <div>
             <DailyFoodForm />
-            <ListDailyFood />
             </div>
             </div>
             </html>
