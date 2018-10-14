@@ -6,5 +6,9 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
+}
+
+.text-div {
+background-color: rgba(146, 164, 171, 0.6)
 }

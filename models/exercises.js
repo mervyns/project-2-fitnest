@@ -1,4 +1,4 @@
-var sha256 = require("js-sha256");
+const sha256 = require("js-sha256");
 const moment = require("moment");
 
 /**

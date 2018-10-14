@@ -38,11 +38,11 @@ module.exports = db => {
     });
   };
 
-  // Code for Daily Nutrition Tracking Actions
+  // Code for Daily Exercise Tracking Actions
   const addDailyExerciseForm = (req, res) => {
     res.render("exercises/AddDailyExerciseForm", { cookies: req.cookies });
   };
-
+// Method for Adding Exercise
   const addDailyExercise = (req, res) => {
     db.exercises.addDailyExercise(req.body, (err, queryResult) => {
       if (err) {
@@ -58,12 +58,13 @@ module.exports = db => {
             console.log("Error Adding Exercise User:", err);
             res.sendStatus(500);
           }
+// TODO: UPDATE RES ACTION
           res.send("done with daily exercise adding");
         }
       );
     });
   };
-
+// Show Exercises from Daily Exercise List
   const showExerciseForDay = (req, res) => {
     db.exercises.showExerciseForDay(req.cookies, (err, queryResult) => {
       if (err) {

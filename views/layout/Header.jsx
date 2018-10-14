@@ -92,7 +92,8 @@ class Header extends React.Component {
                     </a>
                   </div>
                 </li>
-
+              </ul>
+              <ul class="navbar-nav ml-auto">
                 {isLoggedIn ? (
                   <li class="nav-item dropdown">
                     <a
@@ -119,6 +120,9 @@ class Header extends React.Component {
                       <a class="dropdown-item" href="/exercises/daily/show">
                         Show Daily Exercises
                       </a>
+                      <a class="dropdown-item" href="/users/logout">
+                        Logout
+                      </a>
                     </div>
                   </li>
                 ) : (
@@ -141,20 +145,6 @@ class Header extends React.Component {
                   </a>
                 </li>
               </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input
-                  class="form-control mr-sm-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button
-                  class="btn btn-outline-success my-2 my-sm-0"
-                  type="submit"
-                >
-                  Search
-                </button>
-              </form>
             </div>
           </nav>
           <script

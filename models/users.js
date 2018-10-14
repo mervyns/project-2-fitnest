@@ -40,7 +40,6 @@ module.exports = dbPoolInstance => {
   return {
     createUser,
     login,
-    getDashboardInfo,
-    followUser
+    getDashboardInfo
   };
 };
