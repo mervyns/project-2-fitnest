@@ -9,9 +9,29 @@ module.exports = db => {
    * Controller logic
    * ===========================================
    */
+  // Controller for checking if User is Logged in or Logged Out when they visit the root route, and rendering them to page based on login status
+  const checkUserLogin = (req, res) => {
+    let checkSessionCookieHash = sha256(
+      req.cookies.user_id + "logged_id" + SALT
+    );
+    if (req.cookies.loggedIn === checkSessionCookieHash) {
+      db.users.getDashboardInfo(req.cookies, (err, queryResult) => {
+        if (err) {
+          console.error("Error Showing User: ", err);
+        }
+        res.render("layout/MainDashboard", {
+          userInfo: queryResult.rows,
+          cookies: req.cookies
+        });
+      });
+    } else {
+      res.render("index");
+    }
+  };
+
   // Controllers for Creating New Users
   const newForm = (req, res) => {
-    res.render("users/CreateUser", {cookies: req.cookies});
+    res.render("users/CreateUser", { cookies: req.cookies });
   };
 
   const createUser = (req, res) => {
@@ -34,15 +54,18 @@ module.exports = db => {
         res.redirect("/");
       } else {
         console.log("User could not be created");
-// Adding a prop to display a message when User ID is same
-        res.render("users/CreateUser", {message: "this userid has been taken", cookies: req.cookies})
+        // Adding a prop to display a message when User ID is same
+        res.render("users/CreateUser", {
+          message: "this userid has been taken",
+          cookies: req.cookies
+        });
       }
     });
   };
 
   // Controllers for Logging in Users
   const loginForm = (req, res) => {
-    res.render("users/LoginUser", {cookies: req.cookies});
+    res.render("users/LoginUser", { cookies: req.cookies });
   };
 
   const loginUser = (req, res) => {
@@ -72,34 +95,40 @@ module.exports = db => {
     });
   };
 
-// Show Individual User Dashboard
-const showUserDashboard = (req, res) => {
-// Getting from Cookies so that Users can only access their own individual dashboard
-    db.users.getDashboardInfo(req.cookies, (err, queryResult)=> {
-        if (err) {
-            console.error("Error Showing User: ",err)
-        }
-        res.render("users/UserDashboard", {userInfo : queryResult.rows, cookies: req.cookies})
-    })
-}
+  // Show Individual User Dashboard
+  const showUserDashboard = (req, res) => {
+    // Getting from Cookies so that Users can only access their own individual dashboard
+    db.users.getDashboardInfo(req.cookies, (err, queryResult) => {
+      if (err) {
+        console.error("Error Showing User: ", err);
+      }
+      res.render("users/UserDashboard", {
+        userInfo: queryResult.rows,
+        cookies: req.cookies
+      });
+    });
+  };
 
-// Show Main OVERALL User Dashboard
-const showMainDashboard = (req, res) => {
-// Getting from Cookies so that Users can only access their own individual dashboard
-    db.users.getDashboardInfo(req.cookies, (err, queryResult)=> {
-        if (err) {
-            console.error("Error Showing User: ",err)
-        }
-        res.render("layout/MainDashboard", {userInfo : queryResult.rows, cookies: req.cookies})
-    })
-}
+  // Show Main OVERALL User Dashboard
+  const showMainDashboard = (req, res) => {
+    // Getting from Cookies so that Users can only access their own individual dashboard
+    db.users.getDashboardInfo(req.cookies, (err, queryResult) => {
+      if (err) {
+        console.error("Error Showing User: ", err);
+      }
+      res.render("layout/MainDashboard", {
+        userInfo: queryResult.rows,
+        cookies: req.cookies
+      });
+    });
+  };
 
-// Logging Out User by Clearing Cookies
+  // Logging Out User by Clearing Cookies
   const logoutUser = (req, res) => {
-      res.clearCookie('loggedIn');
-      res.clearCookie('user_id')
-      res.redirect('/')
-  }
+    res.clearCookie("loggedIn");
+    res.clearCookie("user_id");
+    res.redirect("/");
+  };
 
   /**
    * ===========================================
@@ -107,6 +136,7 @@ const showMainDashboard = (req, res) => {
    * ===========================================
    */
   return {
+    checkUserLogin,
     newForm,
     createUser,
     loginForm,
@@ -114,6 +144,5 @@ const showMainDashboard = (req, res) => {
     showUserDashboard,
     logoutUser,
     showMainDashboard
-
   };
 };

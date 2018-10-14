@@ -4,9 +4,7 @@ module.exports = (app, db) => {
   const nutrition = require("./controllers/nutrition")(db);
 
   // Root Route
-  app.get("/", (req, res) => {
-    res.render("index", { cookies: req.cookies });
-  });
+  app.get("/", users.checkUserLogin);
 // Testing Routes
   app.get('/dashboard', users.showMainDashboard)
 

@@ -6,15 +6,16 @@ class Header extends React.Component {
   render() {
     // Salt for Hash
     const SALT = "Too Much Salt Is Bad For Health";
+    if(this.props.cookies) {
     const checkSessionCookieHash = sha256(
       this.props.cookies.user_id + "logged_id" + SALT
-    );
+  )
     // Initializing a variable to track whether User is logged in or not.
     // The variable can then be used in a Ternary to render login/logout button.
     var isLoggedIn = false;
     if (this.props.cookies.loggedIn === checkSessionCookieHash) {
       isLoggedIn = true;
-    }
+  }}
     return (
       <html>
         <header>
