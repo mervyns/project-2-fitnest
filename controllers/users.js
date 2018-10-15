@@ -116,9 +116,17 @@ module.exports = db => {
       if (err) {
         console.error("Error Showing User: ", err);
       }
-      res.render("layout/MainDashboard", {
-        userInfo: queryResult.rows,
-        cookies: req.cookies
+      db.users.getDashboardNutriInfo(req.cookies, (err, queryResult2) => {
+        if (err) {
+          console.error("Error Showing User: ", err);
+        }
+        console.log('queryResult1', queryResult)
+        console.log('queryresult2',queryResult2)
+        res.render("layout/MainDashboard", {
+            foodInfo: queryResult2.rows,
+          exerciseInfo: queryResult.rows,
+          cookies: req.cookies
+        });
       });
     });
   };

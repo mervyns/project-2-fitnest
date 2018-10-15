@@ -3,24 +3,35 @@ import Header from "../layout/Header";
 
 class ListDailyFood extends React.Component {
   render() {
-    const dailyFoodArray = this.props.food.rows;
+    const dailyFoodArray = this.props.foodInfo;
     const dailyFoodList = dailyFoodArray.map(item => {
       return (
-        <li>
-          <div className="col-lg-12">
-            <span className="col-lg-2">{item.food_name}</span>
-            <span className="col-lg-1">{item.food_type}</span>
-            <span className="col-lg-2">{item.food_calories}</span>
-            <span className="col-lg-2">{item.food_qty}</span>
-            <span className="col-lg-2">{item.portion}</span>
-          </div>
-        </li>
+        <tr>
+          <td>{item.food_name}</td>
+          <td>{item.food_type}</td>
+          <td>{item.food_calories}</td>
+          <td>{item.food_qty}</td>
+          <td>{item.portion}</td>
+        </tr>
       );
     });
     return (
       <html>
-        <h2>Food List for today</h2>
-        <div>{dailyFoodList}</div>
+          <div className="row float-right d-inline-block">
+                <h2>Food List for today</h2>
+          </div>
+        <table className="table-responsive d-block">
+          <thead>
+            <tr>
+              <th scope="col">Food Name</th>
+              <th scope="col">Food Type</th>
+              <th scope="col">Food Calories</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Portion Size</th>
+            </tr>
+          </thead>
+          <tbody>{dailyFoodList}</tbody>
+        </table>
       </html>
     );
   }

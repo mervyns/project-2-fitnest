@@ -59,7 +59,7 @@ module.exports = db => {
             res.sendStatus(500);
           }
 // TODO: UPDATE RES ACTION
-          res.send("done with daily exercise adding");
+          res.redirect('../../dashboard');
         }
       );
     });

@@ -5,8 +5,7 @@ class AddDailyExerciseForm extends React.Component {
   render() {
     return (
       <html>
-        <Header cookies={this.props.cookies}/>
-        <div className="col-lg-4 center container">
+        <div className="col-md-8 center">
           <h1 className="form-heading">Add Daily Exercise</h1>
           <div className="login-form">
             <div className="main-div">

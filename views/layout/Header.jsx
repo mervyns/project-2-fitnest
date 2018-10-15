@@ -6,6 +6,7 @@ class Header extends React.Component {
   render() {
     // Salt for Hash
     const SALT = "Too Much Salt Is Bad For Health";
+    //Checking for Logged in Status
     if(this.props.cookies) {
     const checkSessionCookieHash = sha256(
       this.props.cookies.user_id + "logged_id" + SALT
@@ -94,8 +95,8 @@ class Header extends React.Component {
                   </div>
                 </li>
               </ul>
-              <ul class="navbar-nav ml-auto">
                 {isLoggedIn ? (
+                    <ul class="navbar-nav ml-auto">
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
@@ -126,26 +127,21 @@ class Header extends React.Component {
                       </a>
                     </div>
                   </li>
-                ) : (
-                  <span>
+                  </ul>
+              )  : (
+                  <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                       <a class="nav-link" href="/users/new">
                         Sign Up
-                      </a>{" "}
-                    </li>
-                    <li>
+                      </a>
+                  </li>
+                  <li>
                       <a class="nav-link" href="/users/login">
                         Log In
-                      </a>{" "}
+                      </a>
                     </li>
-                  </span>
+            </ul>
                 )}
-                <li>
-                  <a class="nav-link" href="#">
-                    Link
-                  </a>
-                </li>
-              </ul>
             </div>
           </nav>
           <script

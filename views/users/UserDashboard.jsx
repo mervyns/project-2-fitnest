@@ -6,7 +6,7 @@ class UserDashboard extends React.Component {
     return (
       <html>
         <div className="container">
-          Hello <p>{this.props.userInfo[0].user_name}</p>
+          <p>Hello {this.props.userInfo[0].user_name}</p>
         </div>
       </html>
     );

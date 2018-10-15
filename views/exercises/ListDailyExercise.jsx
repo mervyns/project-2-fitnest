@@ -3,24 +3,29 @@ import Header from "../layout/Header";
 
 class ListDailyExercise extends React.Component {
   render() {
-    const dailyExerciseArray = this.props.exercise.rows;
+    const dailyExerciseArray = this.props.exerciseInfo;
     const dailyExerciseList = dailyExerciseArray.map(item => {
       return (
-        <li>
-          <div className="col-lg-12">
-            <span className="col-lg-2">{item.exercise_name}</span>
-            <span className="col-lg-1">{item.exercise_type}</span>
-            <span className="col-lg-2">{item.exercise_calories}</span>
-            <span className="col-lg-2">{item.exercise_qty}</span>
-            <span className="col-lg-2"></span>
-          </div>
-        </li>
+        <tr>
+            <td>{item.exercise_name}</td>
+            <td>{item.exercise_type}</td>
+            <td>{item.exercise_qty}</td>
+        </tr>
       );
     });
     return (
       <html>
         <h2>Exercise List for today</h2>
-        <div>{dailyExerciseList}</div>
+        <table className="table-responsive">
+          <thead>
+            <tr>
+              <th scope="col">Exercise Name</th>
+              <th scope="col">Exercise Type</th>
+              <th scope="col">Qty</th>
+            </tr>
+          </thead>
+          <tbody>{dailyExerciseList}</tbody>
+        </table>
       </html>
     );
   }
