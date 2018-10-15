@@ -67,11 +67,35 @@ module.exports = dbPoolInstance => {
       });
   }
 
+  const showFoodForDayMinus1 = (user, callback) => {
+    const queryString =
+    "SELECT * from nutrition INNER JOIN daily_nutri_tracker ON nutrition.food_id = daily_nutri_tracker.food_id WHERE created_date::date=($1) AND user_id=$2";
+    const values = [moment().subtract(1, 'days').format("YYYY/MM/DD"), user.user_id];
+    // execute query
+    dbPoolInstance.query(queryString, values, (error, queryResult) => {
+      // invoke callback function with results after query has executed
+      callback(error, queryResult);
+    });
+  };
+
+  const showFoodForDayMinus2 = (user, callback) => {
+    const queryString =
+    "SELECT * from nutrition INNER JOIN daily_nutri_tracker ON nutrition.food_id = daily_nutri_tracker.food_id WHERE created_date::date=($1) AND user_id=$2";
+    const values = [moment().subtract(2, 'days').format("YYYY/MM/DD"), user.user_id];
+    // execute query
+    dbPoolInstance.query(queryString, values, (error, queryResult) => {
+      // invoke callback function with results after query has executed
+      callback(error, queryResult);
+    });
+  };
+
   return {
     getFoodList,
     addFood,
     addDailyFood,
     addDailyFoodUser,
-    showFoodForDay
+    showFoodForDay,
+    showFoodForDayMinus1,
+    showFoodForDayMinus2
   };
 };

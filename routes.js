@@ -38,6 +38,7 @@ module.exports = (app, db) => {
   app.get("/nutrition/new", nutrition.addFoodForm);
   app.get("/nutrition/daily/new", nutrition.addDailyFoodForm);
   app.get('/nutrition/daily/show', nutrition.showFoodForDay)
+  app.get('/nutrition/dashboard', nutrition.showNutritionDashboard)
   app.post("/nutrition/new", nutrition.addFood);
   app.post("/nutrition/daily/new", nutrition.addDailyFood);
 };

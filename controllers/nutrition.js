@@ -64,9 +64,42 @@ module.exports = db => {
               console.log("Error getting food list for the day:", err);
               res.sendStatus(500)
           }
-          res.render('nutrition/ListDailyFood', {food: queryResult})
+          res.render('nutrition/ListDailyFood', {foodInfo: queryResult.rows})
       })
   }
+
+  // Show Nutrition Dashboard to see Nutrition over the past week
+  // Very Manually Hardcoded for now
+  const showNutritionDashboard = (req, res) => {
+    db.nutrition.showFoodForDay(req.cookies, (err, queryResult) => {
+      if (err) {
+        console.log("Error getting Nutrition Dashboard:", err);
+        res.sendStatus(500);
+      }
+      db.nutrition.showFoodForDayMinus1(req.cookies, (err, queryResult1) => {
+        if (err) {
+          console.log("Error getting exercise list for the day:", err);
+          res.sendStatus(500);
+        }
+        db.nutrition.showFoodForDayMinus2(
+          req.cookies,
+          (err, queryResult2) => {
+            if (err) {
+              console.log("Error getting exercise list for the day:", err);
+              res.sendStatus(500);
+            }
+            console.log(queryResult)
+            res.render("nutrition/ListWeeklyNutrition", {
+                cookies: req.cookies,
+              nutritionInfo: queryResult,
+              nutritionInfo1: queryResult1,
+              nutritionInfo2: queryResult2
+            });
+          }
+        );
+      });
+    });
+  };
 
   return {
     listAllFood,
@@ -74,6 +107,7 @@ module.exports = db => {
     addFood,
     addDailyFood,
     addDailyFoodForm,
-    showFoodForDay
+    showFoodForDay,
+    showNutritionDashboard
   };
 };

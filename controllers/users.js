@@ -19,10 +19,7 @@ module.exports = db => {
         if (err) {
           console.error("Error Showing User: ", err);
         }
-        res.render("layout/MainDashboard", {
-          userInfo: queryResult.rows,
-          cookies: req.cookies
-        });
+        res.redirect("/dashboard")
       });
     } else {
       res.render("index");

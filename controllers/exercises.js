@@ -71,7 +71,7 @@ module.exports = db => {
         console.log("Error getting food list for the day:", err);
         res.sendStatus(500);
       }
-      res.render("exercises/ListDailyExercise", { exercise: queryResult });
+      res.render("exercises/ListDailyExercise", { exerciseInfo: queryResult.rows });
     });
   };
 
