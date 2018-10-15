@@ -17,19 +17,19 @@ class MainDashboard extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <AddDailyExerciseForm />
+              <AddDailyExerciseForm exerciseList={this.props.exerciseList}/>
             </div>
             <div className="col-md-6">
-              <DailyFoodForm />
+              <DailyFoodForm foodList={this.props.foodList}/>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6">
-              <p>Today's Exercise</p>
+              <h2>Today's Exercise</h2>
               <ListDailyExercise exerciseInfo={this.props.exerciseInfo} />
             </div>
             <div className="col-md-6">
-              <p>Today's Nutrition</p>
+              <h2>Today's Nutrition</h2>
               <ListDailyFood foodInfo={this.props.foodInfo} />
             </div>
           </div>

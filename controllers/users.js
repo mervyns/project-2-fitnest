@@ -19,7 +19,7 @@ module.exports = db => {
         if (err) {
           console.error("Error Showing User: ", err);
         }
-        res.redirect("/dashboard")
+        res.redirect("/dashboard");
       });
     } else {
       res.render("index");
@@ -117,12 +117,28 @@ module.exports = db => {
         if (err) {
           console.error("Error Showing User: ", err);
         }
-        console.log('queryResult1', queryResult)
-        console.log('queryresult2',queryResult2)
-        res.render("layout/MainDashboard", {
-            foodInfo: queryResult2.rows,
-          exerciseInfo: queryResult.rows,
-          cookies: req.cookies
+        // Get the List of ALL Exercises (Not very clean MVC but this is a quickfix for now)
+        db.exercises.getExerciseList((err, queryResult3) => {
+          if (err) {
+            console.log("Errror getting exercises:", err);
+            res.sendStatus(500);
+          }
+          // Get the list of all Foods
+          db.nutrition.getFoodList((err, queryResult4) => {
+            if (err) {
+              console.log("Errror getting exercises:", err);
+              res.sendStatus(500);
+            }
+            console.log("queryResult1", queryResult);
+            console.log("queryresult2", queryResult2);
+            res.render("layout/MainDashboard", {
+              foodInfo: queryResult2.rows,
+              foodList: queryResult4.rows,
+              exerciseInfo: queryResult.rows,
+              exerciseList: queryResult3.rows,
+              cookies: req.cookies
+            });
+          });
         });
       });
     });

@@ -16,7 +16,7 @@ class ListDailyExercise extends React.Component {
     return (
       <html>
         <table className="table">
-          <thead>
+          <thead className="thead-light">
             <tr>
               <th scope="col">Exercise Name</th>
               <th scope="col">Exercise Type</th>
