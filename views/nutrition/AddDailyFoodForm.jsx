@@ -6,7 +6,6 @@ class AddDailyFoodForm extends React.Component {
     return (
       <html>
         <Header cookies={this.props.cookies}/>
-        <div className="col-lg-4 center container">
           <h1 className="form-heading">Add Food</h1>
           <div className="login-form">
             <div className="main-div">
@@ -29,7 +28,6 @@ class AddDailyFoodForm extends React.Component {
                 </button>
               </form>
             </div>
-          </div>
         </div>
       </html>
     );

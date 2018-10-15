@@ -5,7 +5,6 @@ class AddDailyExerciseForm extends React.Component {
   render() {
     return (
       <html>
-        <div className="col-md-8 center">
           <h1 className="form-heading">Add Daily Exercise</h1>
           <div className="login-form">
             <div className="main-div">
@@ -38,7 +37,6 @@ class AddDailyExerciseForm extends React.Component {
                 </button>
               </form>
             </div>
-          </div>
         </div>
       </html>
     );

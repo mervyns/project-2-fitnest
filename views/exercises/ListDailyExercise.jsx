@@ -15,8 +15,7 @@ class ListDailyExercise extends React.Component {
     });
     return (
       <html>
-        <h2>Exercise List for today</h2>
-        <table className="table-responsive">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Exercise Name</th>

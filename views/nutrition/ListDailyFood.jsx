@@ -17,10 +17,7 @@ class ListDailyFood extends React.Component {
     });
     return (
       <html>
-          <div className="row float-right d-inline-block">
-                <h2>Food List for today</h2>
-          </div>
-        <table className="table-responsive d-block">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Food Name</th>

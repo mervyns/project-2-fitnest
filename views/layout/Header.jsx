@@ -122,6 +122,9 @@ class Header extends React.Component {
                       <a class="dropdown-item" href="/exercises/daily/show">
                         Show Daily Exercises
                       </a>
+                      <a class="dropdown-item" href="/exercises/dashboard">
+                        Show Weekly Exercises
+                      </a>
                       <a class="dropdown-item" href="/users/logout">
                         Logout
                       </a>

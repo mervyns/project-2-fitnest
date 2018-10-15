@@ -27,6 +27,7 @@ module.exports = (app, db) => {
   app.get("/exercises/new", exercises.addExerciseForm);
   app.get("/exercises/daily/new", exercises.addDailyExerciseForm);
   app.get('/exercises/daily/show', exercises.showExerciseForDay)
+  app.get('/exercises/dashboard', exercises.showExerciseDashboard)
   app.post("/exercises/new", exercises.addExercise);
   app.post("/exercises/daily/new", exercises.addDailyExercise);
 

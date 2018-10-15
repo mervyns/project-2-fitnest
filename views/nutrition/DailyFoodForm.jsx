@@ -5,7 +5,6 @@ class AddDailyFoodForm extends React.Component {
   render() {
     return (
       <html>
-        <div className="col-md-8 center">
           <h1 className="form-heading">Add Food</h1>
           <div className="login-form">
             <div className="main-div">
@@ -41,7 +40,6 @@ class AddDailyFoodForm extends React.Component {
                   Add Food
                 </button>
               </form>
-            </div>
           </div>
         </div>
       </html>

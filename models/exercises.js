@@ -68,11 +68,35 @@ module.exports = dbPoolInstance => {
     });
   };
 
+  const showExerciseForDayMinus1 = (user, callback) => {
+    const queryString =
+    "SELECT * from exercise INNER JOIN daily_exercise_tracker ON exercise.exercise_id = daily_exercise_tracker.exercise_id WHERE created_date::date=($1) AND user_id=$2";
+    const values = [moment().subtract(1, 'days').format("YYYY/MM/DD"), user.user_id];
+    // execute query
+    dbPoolInstance.query(queryString, values, (error, queryResult) => {
+      // invoke callback function with results after query has executed
+      callback(error, queryResult);
+    });
+  };
+
+  const showExerciseForDayMinus2 = (user, callback) => {
+    const queryString =
+    "SELECT * from exercise INNER JOIN daily_exercise_tracker ON exercise.exercise_id = daily_exercise_tracker.exercise_id WHERE created_date::date=($1) AND user_id=$2";
+    const values = [moment().subtract(2, 'days').format("YYYY/MM/DD"), user.user_id];
+    // execute query
+    dbPoolInstance.query(queryString, values, (error, queryResult) => {
+      // invoke callback function with results after query has executed
+      callback(error, queryResult);
+    });
+  };
+
   return {
     getExerciseList,
     addExercise,
     addDailyExercise,
     addDailyExerciseUser,
-    showExerciseForDay
+    showExerciseForDay,
+    showExerciseForDayMinus1,
+    showExerciseForDayMinus2
   };
 };
