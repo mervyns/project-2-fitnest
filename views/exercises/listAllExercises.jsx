@@ -3,26 +3,37 @@ import Header from "../layout/Header";
 
 class ListAllExercises extends React.Component {
   render() {
-    const exerciseArray = this.props.exercises.rows;
-    console.log(exerciseArray);
-    const exerciseList = exerciseArray.map(item => {
+    const exercisesArray = this.props.exercises.rows;
+    const exercisesArrayList = exercisesArray.map(item => {
       return (
-        <li>
-          <div className="col-lg-12">
-            <span className="col-lg-2">{item.exercise_name}</span>
-            <span className="col-lg-1">{item.exercise_type}</span>
-            <span className="col-lg-2">{item.exercise_img}</span>
-            <span className="col-lg-2">{item.exercise_major_muscle_group}</span>
-            <span className="col-lg-2">{item.exercise_minor_muscle_group}</span>
-            <span className="col-lg-2">{item.exercise_notes}</span>
-          </div>
-        </li>
+        <tr>
+          <td>{item.exercise_id}</td>
+          <td>{item.exercise_name}</td>
+          <td>{item.exercise_type}</td>
+          <td>{item.exercise_major_muscle_group}</td>
+          <td>{item.exercise_minor_muscle_group}</td>
+          <td>{item.exercise_notes}</td>
+        </tr>
       );
     });
     return (
       <html>
         <Header cookies={this.props.cookies} />
-        <ol>{exerciseList}</ol>
+        <div className="container">
+          <table className="table">
+            <thead className="thead-light">
+              <tr>
+                <th scope="col">ID No.</th>
+                <th scope="col">Exercise Name</th>
+                <th scope="col">Exercise Type</th>
+                <th scope="col">Major Muscle Group</th>
+                <th scope="col">Minor Muscle Group</th>
+                <th scope="col">Exercise Notes</th>
+              </tr>
+            </thead>
+            <tbody>{exercisesArrayList}</tbody>
+          </table>
+        </div>
       </html>
     );
   }

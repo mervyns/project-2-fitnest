@@ -67,7 +67,7 @@ class CreateUser extends React.Component {
                     id="inputAge"
                     placeholder="Your Age"
                   />
-                  <div className="input-group-append">
+                  <div className="input-group-append ">
            <div className="input-group-text">Years</div>
          </div>
                 </div>

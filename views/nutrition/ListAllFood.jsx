@@ -4,24 +4,34 @@ import Header from "../layout/Header";
 class ListAllFood extends React.Component {
   render() {
     const nutritionArray = this.props.nutrition.rows;
-    console.log(nutritionArray);
     const nutritionList = nutritionArray.map(item => {
       return (
-        <li>
-          <div className="col-lg-12">
-            <span className="col-lg-2">{item.food_name}</span>
-            <span className="col-lg-1">{item.food_type}</span>
-            <span className="col-lg-2">{item.exercise_img}</span>
-            <span className="col-lg-2">{item.food_calories}</span>
-            <span className="col-lg-2">{item.portion}</span>
-          </div>
-        </li>
+        <tr>
+            <td>{item.food_id}</td>
+                <td>{item.food_name}</td>
+          <td>{item.food_type}</td>
+          <td>{item.portion}</td>
+          <td>{item.food_calories}</td>
+        </tr>
       );
     });
     return (
       <html>
-        <Header cookies={this.props.cookies} />
-        <ol>{nutritionList}</ol>
+          <Header cookies={this.props.cookies} />
+          <div className="container">
+        <table className="table">
+          <thead className="thead-light">
+            <tr>
+                <th scope="col">ID No.</th>
+                    <th scope="col">Food Name</th>
+              <th scope="col">Food Type</th>
+              <th scope="col">Portion Size</th>
+              <th scope="col">Total Calories</th>
+            </tr>
+          </thead>
+          <tbody>{nutritionList}</tbody>
+        </table>
+        </div>
       </html>
     );
   }
