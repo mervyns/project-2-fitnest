@@ -7,16 +7,17 @@ class Header extends React.Component {
     // Salt for Hash
     const SALT = "Too Much Salt Is Bad For Health";
     //Checking for Logged in Status
-    if(this.props.cookies) {
-    const checkSessionCookieHash = sha256(
-      this.props.cookies.user_id + "logged_id" + SALT
-  )
-    // Initializing a variable to track whether User is logged in or not.
-    // The variable can then be used in a Ternary to render login/logout button.
-    var isLoggedIn = false;
-    if (this.props.cookies.loggedIn === checkSessionCookieHash) {
-      isLoggedIn = true;
-  }}
+    if (this.props.cookies) {
+      const checkSessionCookieHash = sha256(
+        this.props.cookies.user_id + "logged_id" + SALT
+      );
+      // Initializing a variable to track whether User is logged in or not.
+      // The variable can then be used in a Ternary to render login/logout button.
+      var isLoggedIn = false;
+      if (this.props.cookies.loggedIn === checkSessionCookieHash) {
+        isLoggedIn = true;
+      }
+    }
     return (
       <html>
         <header>
@@ -95,8 +96,8 @@ class Header extends React.Component {
                   </div>
                 </li>
               </ul>
-                {isLoggedIn ? (
-                    <ul class="navbar-nav ml-auto">
+              {isLoggedIn ? (
+                <ul class="navbar-nav ml-auto">
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
@@ -133,21 +134,21 @@ class Header extends React.Component {
                       </a>
                     </div>
                   </li>
-                  </ul>
-              )  : (
-                  <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="/users/new">
-                        Sign Up
-                      </a>
+                </ul>
+              ) : (
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/users/new">
+                      Sign Up
+                    </a>
                   </li>
                   <li>
-                      <a class="nav-link" href="/users/login">
-                        Log In
-                      </a>
-                    </li>
-            </ul>
-                )}
+                    <a class="nav-link" href="/users/login">
+                      Log In
+                    </a>
+                  </li>
+                </ul>
+              )}
             </div>
           </nav>
           <script

@@ -3,6 +3,14 @@ import Header from "../layout/Header";
 
 class AddExerciseForm extends React.Component {
   render() {
+      const exerciseListArray = this.props.exerciseList;
+      const dailyExerciseSelection = exerciseListArray.map(exercise => {
+        return (
+          <div>
+            <option value={exercise.exercise_name}>{exercise.exercise_name}</option>
+          </div>
+        );
+      });
     return (
       <html>
         <Header cookies={this.props.cookies}/>
@@ -34,7 +42,6 @@ class AddExerciseForm extends React.Component {
                     placeholder="Plyo"
                   />
                 </div>
-
                 <div className="form-group">
                     <label for="inputImg">Exercise Img Link</label>
                   <input

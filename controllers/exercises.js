@@ -71,7 +71,9 @@ module.exports = db => {
         console.log("Error getting food list for the day:", err);
         res.sendStatus(500);
       }
-      res.render("exercises/ListDailyExercise", { exerciseInfo: queryResult.rows });
+      res.render("exercises/ListDailyExercise", {
+        exerciseInfo: queryResult.rows
+      });
     });
   };
 
@@ -96,13 +98,59 @@ module.exports = db => {
               res.sendStatus(500);
             }
             res.render("exercises/ListWeeklyExercise", {
-                cookies: req.cookies,
+              cookies: req.cookies,
               exerciseInfo: queryResult,
               exerciseInfo1: queryResult1,
               exerciseInfo2: queryResult2
             });
           }
         );
+      });
+    });
+  };
+
+  const createExercisePlanForm = (req, res) => {
+    db.exercises.getExerciseList((err, queryResult) => {
+      if (err) {
+        console.log("Errror getting exercises:", err);
+        res.sendStatus(500);
+      }
+      res.render("exercises/CreateExercisePlanForm", {
+        cookies: req.cookies,
+        exerciseList: queryResult
+      });
+    });
+  };
+
+  const createExercisePlan = (req, res) => {
+    db.exercises.createExercisePlan(
+      req.body,
+      req.cookies,
+      (err, queryResult) => {
+        if (err) {
+          console.log("Error getting exercises:", err);
+          res.sendStatus(500);
+        }
+        db.exercises.insertExerciseId(req.body, (err, queryResult) => {
+          if (err) {
+            console.log("Error getting exercises:", err);
+            res.sendStatus(500);
+          }
+          res.redirect("../../dashboard");
+        });
+      }
+    );
+  };
+
+  const getFitnessPlans = (req, res) => {
+    db.exercises.getFitnessPlans((err, queryResult) => {
+      if (err) {
+        console.log("Error getting fitness plans:", err);
+        res.sendStatus(500);
+      }
+      res.render("exercises/ListFitnessPlans", {
+        cookies: req.cookies,
+        plans: queryResult.rows
       });
     });
   };
@@ -114,6 +162,9 @@ module.exports = db => {
     addDailyExerciseForm,
     addDailyExercise,
     showExerciseForDay,
-    showExerciseDashboard
+    showExerciseDashboard,
+    createExercisePlanForm,
+    createExercisePlan,
+    getFitnessPlans
   };
 };

@@ -22,6 +22,7 @@ class CreateUser extends React.Component {
                     className="form-control"
                     id="inputName"
                     placeholder="Jack Sparrow"
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -32,6 +33,7 @@ class CreateUser extends React.Component {
                     className="form-control"
                     id="inputEmail"
                     placeholder="jack@sparrow.com"
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -42,6 +44,7 @@ class CreateUser extends React.Component {
                     className="form-control"
                     id="inputPassword"
                     placeholder="Password"
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -49,7 +52,7 @@ class CreateUser extends React.Component {
                     Gender (We are collecting this information to give you
                     better recommendations)
                   </label>
-                  <select name="gender" id="inputGender" class="form-control">
+                  <select name="gender" id="inputGender" class="form-control" required>
                     <option selected>Choose Your Gender</option>
                     <option>Male</option>
                     <option>Female</option>
@@ -107,6 +110,7 @@ class CreateUser extends React.Component {
                     className="form-control"
                     id="inputEmail"
                     placeholder="2500"
+                    required
                   />
               <div className="input-group-append">
        <div className="input-group-text">KCal</div>

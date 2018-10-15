@@ -28,8 +28,11 @@ module.exports = (app, db) => {
   app.get("/exercises/daily/new", exercises.addDailyExerciseForm);
   app.get('/exercises/daily/show', exercises.showExerciseForDay)
   app.get('/exercises/dashboard', exercises.showExerciseDashboard)
+  app.get('/exercises/plan/new', exercises.createExercisePlanForm)
+  app.get('/exercises/plan/show', exercises.getFitnessPlans)
   app.post("/exercises/new", exercises.addExercise);
   app.post("/exercises/daily/new", exercises.addDailyExercise);
+  app.post('/exercises/plan/new', exercises.createExercisePlan)
 
 
   // CRUD Nutrition
